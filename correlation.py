@@ -18,24 +18,22 @@ def compute_phi ( file_name , event ) :
 	n10 = 0
 	n01 = 0
 	for i in data :
-		if ( i [ 'squirrel' ] == True ) :
+		if j in i [ 'events' ] and i [ 'squirrel' ] == True  :
+			n11 += 1
 			n_1 += 1 
-			for j in i [ 'events' ] :
-				if ( j == event ) : 
-					n1_ += 1
-					n11 += 1
-				else :
-					n0_ += 1
-					n01 += 1
-		else :
-			n_0 += 1 
-			for j in i [ 'events' ] :
-				if ( j == event ) : 
-					n1_ += 1
-					n10 += 1
-				else :
-					n0_ += 1
-					n00 += 1
+			n1_ += 1
+		if j in i [ 'events' ] and i [ 'squirrel' ] == False  :
+			n10 += 1
+			n_0 += 1
+			n1_ += 1
+		if j not in i [ 'events' ] and i [ 'squirrel' ] == True  :
+			n01 += 1
+			n_1 += 1
+			n0_ += 1
+		if j not in i [ 'events' ] and i [ 'squirrel' ] == False  :
+			n00 +=1
+			n0_ +=1
+			n_0 +=1		
 	corr=(n11 * n00 - n10 * n01) / sqrt(n1_ * n0_ * n_1 * n_0)
 	return corr
 
