@@ -18,7 +18,7 @@ def compute_phi ( file_name , event ) :
 	n10 = 0
 	n01 = 0
 	for i in data :
-		if ( i ['squirrel'] == True ) :
+		if ( i [ 'squirrel' ] == True ) :
 			n_1 += 1 
 			for j in i [ 'events' ] :
 				if ( j == event ) : 
@@ -28,7 +28,7 @@ def compute_phi ( file_name , event ) :
 					n0_ += 1
 					n01 += 1
 		else :
-			n_0+=1 
+			n_0 += 1 
 			for j in i [ 'events' ] :
 				if ( j == event ) : 
 					n1_ += 1
@@ -46,4 +46,19 @@ def compute_correlations ( file_name ) :
 		for event in i [ 'events' ] :
 			if event not in corr_log :
 				corr_log [ event ] = compute_phi ( file_name , event )
-	return corr_log
+	return corr_log 
+	
+def diagnose ( file_name ) : 
+	corr_log = compute_correlations ( file_name )
+	mx = -1024
+	mn = 1024
+	for k,v in corr_log.items() :
+		if ( v > mx ) :
+			mx = v
+			max_r = k
+		if ( v < mn ) :
+			mn = v
+			min_r = k
+	return [ max_r , min_r ]
+
+		
