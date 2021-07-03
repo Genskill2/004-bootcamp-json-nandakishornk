@@ -18,19 +18,19 @@ def compute_phi ( file_name , event ) :
 	n10 = 0
 	n01 = 0
 	for i in data :
-		if j in i [ 'events' ] and i [ 'squirrel' ] == True  :
+		if event in i [ 'events' ] and i [ 'squirrel' ] == True  :
 			n11 += 1
 			n_1 += 1 
 			n1_ += 1
-		if j in i [ 'events' ] and i [ 'squirrel' ] == False  :
+		if event in i [ 'events' ] and i [ 'squirrel' ] == False  :
 			n10 += 1
 			n_0 += 1
 			n1_ += 1
-		if j not in i [ 'events' ] and i [ 'squirrel' ] == True  :
+		if event not in i [ 'events' ] and i [ 'squirrel' ] == True  :
 			n01 += 1
 			n_1 += 1
 			n0_ += 1
-		if j not in i [ 'events' ] and i [ 'squirrel' ] == False  :
+		if event not in i [ 'events' ] and i [ 'squirrel' ] == False  :
 			n00 +=1
 			n0_ +=1
 			n_0 +=1		
