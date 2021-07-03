@@ -2,10 +2,9 @@
 
 
 def load_journal(fname):
-	f=open(fname,"r")
-	a=f.read()
-	f.close()
-	return a
+	with open(fname,"r") as json_file:
+		data=json.load(json_file)
+	return data
 	
 
 
